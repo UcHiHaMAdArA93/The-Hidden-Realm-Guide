@@ -32,6 +32,14 @@ class CustomContent extends StatelessWidget {
                   color: Colors.white
                 ),
                 ),
+                SizedBox(height: 12,),
+                Text("Exiled Lands",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  color: Colors.white,
+                ),
+                ),
               ],
               )
             ],
