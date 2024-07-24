@@ -25,7 +25,13 @@ class CustomContent extends StatelessWidget {
             children: const [
               Column(
               children: [
-                Text("data"),
+                Text("Custom Content",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 28,
+                  color: Colors.white
+                ),
+                ),
               ],
               )
             ],
