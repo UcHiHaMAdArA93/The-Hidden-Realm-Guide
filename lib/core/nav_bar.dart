@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hidden_realm_guide/src/features/custom_content/content.dart';
+import 'package:hidden_realm_guide/src/features/custom_content/presentation/content.dart';
 import 'package:hidden_realm_guide/src/features/home/home_screen.dart';
 import 'package:hidden_realm_guide/src/features/profile/profile.dart';
 import 'package:hidden_realm_guide/src/features/rules/rules.dart';
