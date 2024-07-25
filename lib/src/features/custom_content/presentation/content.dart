@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hidden_realm_guide/src/features/custom_content/data/exiled_lands.dart';
+import 'package:hidden_realm_guide/src/features/custom_content/data/isle_of_siptah.dart';
+import 'package:hidden_realm_guide/src/features/custom_content/data/savage_wilds.dart';
+import 'package:hidden_realm_guide/src/features/custom_content/data/underworld.dart';
 
 class CustomContent extends StatelessWidget {
   const CustomContent({super.key});
@@ -42,19 +46,23 @@ class CustomContent extends StatelessWidget {
                         borderRadius: BorderRadius.circular(22),
                         color: const Color(0xffdec5ff),
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                         const Text("Exiled Lands",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
-                          ),
-                          ),
-                          Expanded(
-                            child: Image.asset("assets/guide_asset.png", height: 50, width: 50,),
+                      child: GestureDetector(
+                        onTap: () => Navigator.of(context).push( MaterialPageRoute(
+                    builder: (BuildContext context) => const ExiledLands())),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                           const Text("Exiled Lands",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22,
                             ),
-                        ],
+                            ),
+                            Expanded(
+                              child: Image.asset("assets/guide_asset.png", height: 50, width: 50,),
+                              ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -66,19 +74,23 @@ class CustomContent extends StatelessWidget {
                         borderRadius: BorderRadius.circular(22),
                         color: const Color(0xffdec5ff),
                       ),
-                      child:  Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text("Isle Of Siptah",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
-                          ),
-                          ),
-                          Expanded(
-                            child: Image.asset("assets/guide_asset.png", height: 50, width: 50,),
+                      child:  GestureDetector(
+                        onTap: () => Navigator.of(context).push( MaterialPageRoute(
+                    builder: (BuildContext context) => const IsleOfSiptah())),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text("Isle Of Siptah",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22,
                             ),
-                        ],
+                            ),
+                            Expanded(
+                              child: Image.asset("assets/guide_asset.png", height: 50, width: 50,),
+                              ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -90,19 +102,23 @@ class CustomContent extends StatelessWidget {
                         borderRadius: BorderRadius.circular(22),
                         color: const Color(0xffdec5ff),
                       ),
-                      child:  Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text("Savage Wilds",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
-                          ),
-                          ),
-                          Expanded(
-                            child: Image.asset("assets/guide_asset.png", height: 50, width: 50,),
+                      child:  GestureDetector(
+                        onTap: () => Navigator.of(context).push( MaterialPageRoute(
+                    builder: (BuildContext context) => const SavageWilds())),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text("Savage Wilds",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22,
                             ),
-                        ],
+                            ),
+                            Expanded(
+                              child: Image.asset("assets/guide_asset.png", height: 50, width: 50,),
+                              ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -114,19 +130,23 @@ class CustomContent extends StatelessWidget {
                         borderRadius: BorderRadius.circular(22),
                         color: const Color(0xffdec5ff),
                       ),
-                      child:  Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text("Underworld",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
-                          ),
-                          ),
-                          Expanded(
-                            child: Image.asset("assets/guide_asset.png", height: 50, width: 50,),
+                      child:  GestureDetector(
+                        onTap: () => Navigator.of(context).push( MaterialPageRoute(
+                    builder: (BuildContext context) => const Underworld())),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text("Underworld",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22,
                             ),
-                        ],
+                            ),
+                            Expanded(
+                              child: Image.asset("assets/guide_asset.png", height: 50, width: 50,),
+                              ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

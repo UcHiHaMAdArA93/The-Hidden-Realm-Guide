@@ -19,7 +19,33 @@ class SavageWilds extends StatelessWidget {
          ],
        ),
       ),
-      child: const Stack(),
+      child:  Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ListView(
+              children:  [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                     GestureDetector(
+                      onTap: () => Navigator.of(context).pop(),
+                      child: const Icon(Icons.chevron_left, color: Colors.white,)),
+                     const SizedBox(width: 20,),
+                      const Text("Savage Wilds",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 28,
+                        color: Colors.white
+                      ),
+                      ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
       )
     );
   }
