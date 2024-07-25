@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
 
 class Ascensions extends StatelessWidget {
   const Ascensions({super.key});
@@ -58,7 +59,12 @@ class Ascensions extends StatelessWidget {
                   fontSize: 18,
                 ),
                 ),
-                Image.asset("assets/ascension1.png"),
+                SizedBox(
+                  height: 200,
+                  width: 300,
+                  child: PhotoView(imageProvider: const AssetImage("assets/ascension1.png"),
+                  ),
+                ),
                 const Divider(height: 8, color: Colors.black,),
                 const Text("Second Set of Ascensions YMIR",
                 style: TextStyle(
@@ -67,7 +73,12 @@ class Ascensions extends StatelessWidget {
                   fontSize: 18,
                 ),
                 ),
-                Image.asset("assets/ascension2.png"),
+                SizedBox(
+                  height: 200,
+                  width: 300,
+                  child: PhotoView(imageProvider: const AssetImage("assets/ascension2.png"),
+                  ),
+                  ),
                 const Divider(height: 8, color: Colors.black,),
                 const Text("Third Set of Ascensions Yog",
                 style: TextStyle(
@@ -76,7 +87,12 @@ class Ascensions extends StatelessWidget {
                   fontSize: 18,
                 ),
                 ),
-                Image.asset("assets/asension3.png"),
+                SizedBox(
+                  height: 200,
+                  width: 300,
+                  child: PhotoView(imageProvider: const AssetImage("assets/asension3.png"),
+                  ),
+                ),
                 const Divider(height: 8, color: Colors.black,),
                 const Text("Fourth Set of Ascensions Derketo",
                 style: TextStyle(
@@ -85,7 +101,12 @@ class Ascensions extends StatelessWidget {
                   fontSize: 18,
                 ),
                 ),
-                Image.asset("assets/ascension4.png"),
+                SizedBox(
+                  height: 200,
+                  width: 300,
+                  child: PhotoView(imageProvider: const AssetImage("assets/ascension4.png"),
+                  ),
+                ),
                 const Divider(height: 8, color: Colors.black,),
                 const Text("Fifth Set of Ascensions SET",
                 style: TextStyle(
@@ -94,7 +115,12 @@ class Ascensions extends StatelessWidget {
                   fontSize: 18,
                 ),
                 ),
-                Image.asset("assets/ascension5.png"),
+                SizedBox(
+                  height: 200,
+                  width: 300,
+                  child: PhotoView(imageProvider: const AssetImage("assets/ascension5.png"),
+                  ),
+                ),
                 const Divider(height: 8, color: Colors.black,),
                 const Text("Sixth Set of Ascensions DEATH",
                 style: TextStyle(
@@ -103,7 +129,12 @@ class Ascensions extends StatelessWidget {
                   fontSize: 18,
                 ),
                 ),
-                Image.asset("assets/ascension6.png"),
+                SizedBox(
+                  height: 200,
+                  width: 300,
+                  child: PhotoView(imageProvider: const AssetImage("assets/ascension6.png"),
+                  ),
+                ),
                 const Divider(height: 8, color: Colors.black,),
                 const Text("Seventh Set of Ascensions REBIRTH",
                 style: TextStyle(
@@ -112,7 +143,12 @@ class Ascensions extends StatelessWidget {
                   fontSize: 18,
                 ),
                 ),
-                Image.asset("assets/ascension7.png"),
+                SizedBox(
+                  height: 200,
+                  width: 300,
+                  child: PhotoView(imageProvider: const AssetImage("assets/ascension7.png"),
+                  ),
+                ),
         ],
       ),
       ),
