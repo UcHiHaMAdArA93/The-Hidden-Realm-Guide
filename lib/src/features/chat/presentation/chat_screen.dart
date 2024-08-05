@@ -1,17 +1,20 @@
-import 'dart:convert';
 import 'dart:io';
-
+import 'dart:convert';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:mime/mime.dart';
 import 'package:open_filex/open_filex.dart';
+import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:sqflite/sqflite.dart';
 import 'package:uuid/uuid.dart';
+
+String jsonString = '{"key": "value"}'; 
+Map<String, dynamic> jsonMap = jsonDecode(jsonString); 
 
 class MyChat extends StatelessWidget {
   const MyChat({super.key});
@@ -38,19 +41,69 @@ class _ChatPageState extends State<ChatPage> {
     id: '82091008-a484-4a89-ae75-a22bf8d6f3ac',
   );
 
+  late Database _database;
+
   @override
   void initState() {
     super.initState();
-    _loadMessages();
+    _initDatabase();
+  }
+
+  Future<void> _initDatabase() async {
+    final databasePath = await getDatabasesPath();
+    final path = join(databasePath, 'chat_app.db');
+
+    _database = await openDatabase(
+      path,
+      version: 1,
+      onCreate: (db, version) async {
+        await db.execute('''
+          CREATE TABLE messages (
+            id TEXT PRIMARY KEY,
+            author TEXT,
+            createdAt INTEGER,
+            text TEXT,
+            type TEXT,
+            uri TEXT,
+            mimeType TEXT,
+            name TEXT,
+            size INTEGER,
+            width REAL,
+            height REAL
+          )
+        ''');
+      },
+    );
+
+    await _loadMessages();
+  }
+
+  Future<void> _saveMessage(types.Message message) async {
+    await _database.insert(
+      'messages',
+      message.toJson(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> _loadMessages() async {
+    final List<Map<String, dynamic>> maps = await _database.query('messages');
+
+    setState(() {
+      _messages = List.generate(maps.length, (i) {
+        return types.Message.fromJson(maps[i]);
+      });
+    });
   }
 
   void _addMessage(types.Message message) {
     setState(() {
       _messages.insert(0, message);
     });
+    _saveMessage(message);
   }
 
-  void _handleAttachmentPressed() {
+  void _handleAttachmentPressed(BuildContext context) {
     showModalBottomSheet<void>(
       context: context,
       builder: (BuildContext context) => SafeArea(
@@ -139,7 +192,7 @@ class _ChatPageState extends State<ChatPage> {
     }
   }
 
-  void _handleMessageTap(BuildContext _, types.Message message) async {
+  void _handleMessageTap(BuildContext context, types.Message message) async {
     if (message is types.FileMessage) {
       var localPath = message.uri;
 
@@ -209,23 +262,12 @@ class _ChatPageState extends State<ChatPage> {
     _addMessage(textMessage);
   }
 
-  void _loadMessages() async {
-    final response = await rootBundle.loadString('assets/messages.json');
-    final messages = (jsonDecode(response) as List)
-        .map((e) => types.Message.fromJson(e as Map<String, dynamic>))
-        .toList();
-
-    setState(() {
-      _messages = messages;
-    });
-  }
-
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Chat(
           messages: _messages,
-          onAttachmentPressed: _handleAttachmentPressed,
-          onMessageTap: _handleMessageTap,
+          onAttachmentPressed: () => _handleAttachmentPressed(context),
+          onMessageTap: (context, message) => _handleMessageTap(context, message),
           onPreviewDataFetched: _handlePreviewDataFetched,
           onSendPressed: _handleSendPressed,
           showUserAvatars: true,
