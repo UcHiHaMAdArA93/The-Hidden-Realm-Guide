@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hidden_realm_guide/src/features/chat/presentation/chat_screen.dart';
 import 'package:hidden_realm_guide/src/features/custom_content/presentation/content.dart';
 import 'package:hidden_realm_guide/src/features/home/home_screen.dart';
 import 'package:hidden_realm_guide/src/features/Ascencions/ascencions.dart';
@@ -18,6 +19,7 @@ class AppHomeState extends State<AppHome> {
    const Rules(),
    const CustomContent(),
    const Ascensions(),
+   const MyChat(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,7 @@ class AppHomeState extends State<AppHome> {
           NavigationDestination(icon: Icon(Icons.rule, color: Colors.black,), label: "Rules"),
           NavigationDestination(icon: Icon(Icons.folder, color: Colors.black,), label: "Content"),
           NavigationDestination(icon: Icon(Icons.person, color: Colors.black,), label: "Ascensions"),
+          NavigationDestination(icon: Icon(Icons.chat, color: Colors.black,), label: "Chat"),
         ],
       ),
       body: Center(
